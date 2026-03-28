@@ -64,18 +64,22 @@ export const Navbar = () => {
             <MagneticButton key={item.name} strength={0.2}>
               <a
                 href={item.href}
-                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors duration-300 flex items-center gap-2 ${
-                  activeItem === item.name ? "text-white" : "text-white/40 hover:text-white/60"
+                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-all duration-300 flex items-center gap-2 group ${
+                  activeItem === item.name ? "text-white font-bold" : "text-white/40 hover:text-white"
                 }`}
               >
                 {activeItem === item.name && (
                   <motion.div
                     layoutId="nav-pill"
-                    className="absolute inset-0 bg-primary/20 border border-primary/30 rounded-full z-[-1]"
+                    className="absolute inset-0 bg-[#13a4ec]/20 border border-[#13a4ec]/50 rounded-full z-[-1] shadow-[0_0_15px_rgba(19,164,236,0.3)]"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
+
+                {/* Cyber Brackets Effect */}
+                <span className={`transition-opacity duration-300 ${activeItem === item.name ? "opacity-100 text-[#13a4ec]" : "opacity-0 group-hover:opacity-100 text-[#13a4ec]/50"}`}>[</span>
                 {item.name}
+                <span className={`transition-opacity duration-300 ${activeItem === item.name ? "opacity-100 text-[#13a4ec]" : "opacity-0 group-hover:opacity-100 text-[#13a4ec]/50"}`}>]</span>
               </a>
             </MagneticButton>
           ))}
@@ -84,8 +88,16 @@ export const Navbar = () => {
         <div className="h-4 w-[1px] bg-white/10 mx-2" />
 
         <MagneticButton strength={0.3}>
-          <a href="#pricing" className="bg-primary text-white font-black px-6 py-2.5 rounded-full text-[11px] uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_25px_rgba(19,164,236,0.6)] border border-primary/20">
-            Initialize Access
+          <a href="#pricing" className="relative group overflow-hidden bg-[#13a4ec] text-black font-black px-6 py-2.5 rounded-full text-[11px] uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-500 shadow-[0_0_20px_rgba(19,164,236,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] border border-[#13a4ec]/50 flex items-center justify-center min-w-[160px]">
+            <span className="group-hover:-translate-y-8 transition-transform duration-500 absolute">
+              Initialize Access
+            </span>
+            <span className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 absolute flex items-center gap-2">
+              <Activity size={14} className="animate-pulse" />
+              Initializing...
+            </span>
+            {/* Invisible placeholder to keep width */}
+            <span className="opacity-0">Initialize Access</span>
           </a>
         </MagneticButton>
       </motion.div>

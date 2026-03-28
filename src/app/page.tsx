@@ -84,17 +84,30 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-col md:flex-row gap-8 justify-center"
+              className="flex flex-col md:flex-row gap-8 justify-center items-center w-full"
             >
               <MagneticButton strength={0.2}>
-                <a href="#pricing" className="group relative px-12 py-5 bg-[#13a4ec] text-black font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white active:scale-95 text-center">
-                  Initialize Access
+                <a href="#pricing" className="group relative px-12 py-5 bg-[#13a4ec] text-black font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white active:scale-95 text-center overflow-hidden flex items-center justify-center min-w-[280px]">
+                  <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                  <span className="group-hover:-translate-y-12 transition-transform duration-500 absolute">
+                    Initialize Access
+                  </span>
+                  <span className="translate-y-12 group-hover:translate-y-0 transition-transform duration-500 absolute flex items-center gap-2">
+                    <Activity size={18} className="animate-pulse" />
+                    Connecting to Node...
+                  </span>
+                  {/* Spacer */}
+                  <span className="opacity-0">Initialize Access</span>
                 </a>
               </MagneticButton>
               
               <MagneticButton strength={0.2}>
-                <a href="#docs" className="glass px-12 py-5 text-white font-bold uppercase tracking-widest border border-white/10 hover:bg-white/5 transition-all duration-300 text-center">
-                  Documentation
+                <a href="#docs" className="group relative glass px-12 py-5 text-white font-bold uppercase tracking-widest border border-white/10 hover:border-[#13a4ec]/50 hover:bg-[#13a4ec]/10 hover:shadow-[0_0_20px_rgba(19,164,236,0.2)] transition-all duration-300 text-center overflow-hidden min-w-[280px]">
+                   <span className="group-hover:text-[#13a4ec] transition-colors duration-300">
+                     Documentation
+                   </span>
+                   {/* Scanning line effect */}
+                   <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#13a4ec] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                 </a>
               </MagneticButton>
             </motion.div>
