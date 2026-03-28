@@ -25,7 +25,7 @@ export const TextReveal = ({ text, className = "", delay = 0, once = true }: Tex
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 100,
       },
