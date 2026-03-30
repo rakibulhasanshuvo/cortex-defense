@@ -70,7 +70,7 @@ export const Footer = () => {
                 <li><a href="#hero" className="text-white/30 text-[10px] hover:text-primary transition-colors font-mono uppercase tracking-widest block">Documentation</a></li>
                 <li><a href="#security" className="text-white/30 text-[10px] hover:text-primary transition-colors font-mono uppercase tracking-widest block">API Reference</a></li>
                 <li><a href="#network" className="text-white/30 text-[10px] hover:text-primary transition-colors font-mono uppercase tracking-widest block">Status</a></li>
-                <li><a href="https://github.com" target="_blank" className="text-white/30 text-[10px] hover:text-primary transition-colors font-mono uppercase tracking-widest block">Github</a></li>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white/30 text-[10px] hover:text-primary transition-colors font-mono uppercase tracking-widest block">Github</a></li>
               </ul>
             </div>
           </div>
