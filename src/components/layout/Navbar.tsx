@@ -19,25 +19,48 @@ export const Navbar = () => {
   const [activeItem, setActiveItem] = useState("Dashboard");
 
   useEffect(() => {
+    // Throttled scroll listener for background state
+    let lastScrollTime = 0;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      
-      // Update active item based on scroll position
-      const sections = ["hero", "network", "security", "pricing", "docs"];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            const itemName = navItems.find(item => item.href === `#${section}`)?.name || 
-                             (section === "hero" ? "Dashboard" : "");
-            if (itemName) setActiveItem(itemName);
-          }
-        }
+      const now = Date.now();
+      if (now - lastScrollTime >= 100) {
+        setScrolled(window.scrollY > 50);
+        lastScrollTime = now;
       }
     };
+
+    // IntersectionObserver for section tracking
+    const sections = ["hero", "network", "security", "pricing", "docs"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-10% 0px -80% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const itemName = navItems.find(item => item.href === `#${sectionId}`)?.name ||
+                           (sectionId === "hero" ? "Dashboard" : "");
+          if (itemName) setActiveItem(itemName);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
