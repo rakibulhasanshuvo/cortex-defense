@@ -1,26 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Mail, ArrowRight } from "lucide-react";
+import { Shield } from "lucide-react";
 import { Twitter, Github, Linkedin } from "../ui/Icons";
 import Link from "next/link";
 import { MagneticButton } from "../ui/MagneticButton";
 import { NewsletterForm } from "../ui/NewsletterForm";
 
-const footerLinks = [
-  {
-    title: "Protocol",
-    links: ["Cortex.OS", "Neural Network", "Security Nodes", "Whitepaper"],
-  },
-  {
-    title: "Governance",
-    links: ["DAO", "Voting", "Treasury", "Security Council"],
-  },
-  {
-    title: "Resources",
-    links: ["Documentation", "API Reference", "Status", "Github"],
-  },
-];
 
 export const Footer = () => {
   return (
