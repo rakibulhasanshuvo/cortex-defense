@@ -32,12 +32,13 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${ibmPlexMono.variable} antialiased bg-[#080c0e] selection:bg-[#13a4ec]/30 selection:text-white`}
       >
-        <ScrollProgress />
-        <NoiseOverlay />
-        <AmbientGlow />
-        <CustomCursor />
-        <div className="scanline" />
-        {children}
+        <CustomCursor>
+          <ScrollProgress />
+          <NoiseOverlay />
+          <AmbientGlow />
+          <div className="scanline" />
+          {children}
+        </CustomCursor>
       </body>
     </html>
   );

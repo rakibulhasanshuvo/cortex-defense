@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 
-export const CustomCursor = () => {
+export const CustomCursor = ({ children }: { children?: React.ReactNode }) => {
+  const containerRef = useRef<HTMLDivElement>(null)
   const mousePosition = useRef({ x: 0, y: 0 })
 
   const dotPosition = useRef({ x: 0, y: 0 })
@@ -31,7 +32,7 @@ export const CustomCursor = () => {
     window.addEventListener("mouseup", handleMouseUp)
 
     const updateInteractiveElements = () => {
-        const interactiveElements = document.querySelectorAll("a, button, img, input, textarea, select, .group")
+        const interactiveElements = containerRef.current?.querySelectorAll("a, button, img, input, textarea, select, .group") ?? []
         interactiveElements.forEach((element) => {
           element.addEventListener("mouseenter", handleMouseEnter)
           element.addEventListener("mouseleave", handleMouseLeave)
@@ -79,10 +80,12 @@ export const CustomCursor = () => {
     }
   }, [])
 
-  if (typeof window === "undefined") return null
+  if (typeof window === "undefined") return <>{children}</>
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[9999]">
+    <div ref={containerRef}>
+      {children}
+      <div className="pointer-events-none fixed inset-0 z-[9999]">
       <div
         className="absolute rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
         style={{
@@ -107,6 +110,7 @@ export const CustomCursor = () => {
           backgroundColor: isHovering ? "rgba(19, 164, 236, 0.1)" : "transparent",
         }}
       />
+      </div>
     </div>
   )
 }
