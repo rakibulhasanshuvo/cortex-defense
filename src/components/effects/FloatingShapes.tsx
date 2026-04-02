@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 
+const PARTICLES = Array.from({ length: 5 }, (_, i) => ({
+  id: i,
+  x: Math.random() * 50 - 25,
+  duration: 5 + Math.random() * 5,
+  delay: i * 2,
+}));
+
 export const FloatingShapes = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -59,19 +66,19 @@ export const FloatingShapes = () => {
       />
 
       {/* Small Data Particles */}
-      {[...Array(5)].map((_, i) => (
+      {PARTICLES.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.id}
           initial={{ opacity: 0, y: 100 }}
           animate={{
             y: [-20, -150],
             opacity: [0, 0.5, 0],
-            x: Math.random() * 50 - 25
+            x: particle.x
           }}
           transition={{
-            duration: 5 + Math.random() * 5,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: i * 2,
+            delay: particle.delay,
             ease: "linear",
           }}
           className="absolute bottom-[10%] right-[20%] w-[1px] h-10 bg-gradient-to-t from-transparent via-[#13a4ec] to-transparent"
