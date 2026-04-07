@@ -14,6 +14,8 @@ const logos = [
   { name: "Grid", icon: Network },
 ];
 
+const MARQUEE_LOGOS = [...logos, ...logos, ...logos, ...logos];
+
 export const Marquee = () => {
   return (
     <div className="relative w-full overflow-hidden bg-black/40 py-20 border-y border-white/5">
@@ -22,8 +24,7 @@ export const Marquee = () => {
 // ... existing transition ...
           className="flex items-center gap-24 px-12"
         >
-          {/* Double the logos for seamless loop */}
-          {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
+          {MARQUEE_LOGOS.map((logo, index) => (
             <div
               key={index}
               className="flex items-center gap-6 grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all duration-700 cursor-pointer group"
