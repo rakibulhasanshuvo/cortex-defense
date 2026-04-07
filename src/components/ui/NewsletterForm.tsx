@@ -17,7 +17,8 @@ export const NewsletterForm = () => {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
         
-        if (email.includes("error")) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email)) {
             setStatus("error");
         } else {
             setStatus("success");
@@ -52,6 +53,7 @@ export const NewsletterForm = () => {
                                 animate={{ opacity: 1, rotate: 360 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                data-testid="loading-icon"
                             >
                                 <Loader2 size={18} />
                             </motion.div>
