@@ -40,7 +40,7 @@ describe('NewsletterForm', () => {
     expect(input.value).toBe('test@example.com');
   });
 
-  it('handles successful submission', async () => {
+  it('handles successful submission and subsequent reset', async () => {
     render(<NewsletterForm />);
     const input = screen.getByPlaceholderText('EMAIL ADDRESS');
     const button = screen.getByRole('button');
@@ -73,11 +73,12 @@ describe('NewsletterForm', () => {
     expect(screen.queryByText(/PROTOCOL SUBSCRIPTION CONFIRMED/i)).not.toBeInTheDocument();
   });
 
-  it('handles error submission', async () => {
+  it('handles error submission and subsequent reset', async () => {
     render(<NewsletterForm />);
     const input = screen.getByPlaceholderText('EMAIL ADDRESS');
     const button = screen.getByRole('button');
 
+    // The component triggers an error state if the email includes "error"
     fireEvent.change(input, { target: { value: 'error@test.com' } });
     fireEvent.click(button);
 
