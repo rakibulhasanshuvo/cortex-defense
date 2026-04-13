@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Shield, LayoutDashboard, Share2, FileText, Activity } from "lucide-react";
 import { MagneticButton } from "../ui/MagneticButton";
 import { ScrollProgress } from "../ui/ScrollProgress";
