@@ -17,8 +17,8 @@ export const NewsletterForm = () => {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
         
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailRegex.test(email)) {
+        const emailRegex = /^[a-zA-Z0-9_+-]+(?:\.[a-zA-Z0-9_+-]+)*@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,24}$/;
+        if (email.length > 254 || !emailRegex.test(email)) {
             setStatus("error");
         } else {
             setStatus("success");
