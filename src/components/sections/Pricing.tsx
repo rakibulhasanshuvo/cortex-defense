@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Shield, Zap, Lock, ChevronRight } from "lucide-react";
+import { Check } from "lucide-react";
 import { MagneticButton } from "../ui/MagneticButton";
 import { SectionHeader } from "../ui/SectionHeader";
 
