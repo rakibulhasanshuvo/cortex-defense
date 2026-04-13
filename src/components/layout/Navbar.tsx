@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { Shield, LayoutDashboard, Share2, FileText, Activity } from "lucide-react";
 import { MagneticButton } from "../ui/MagneticButton";
 import { ScrollProgress } from "../ui/ScrollProgress";
@@ -18,17 +18,13 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState("Dashboard");
 
-  useEffect(() => {
-    // Throttled scroll listener for background state
-    let lastScrollTime = 0;
-    const handleScroll = () => {
-      const now = Date.now();
-      if (now - lastScrollTime >= 100) {
-        setScrolled(window.scrollY > 50);
-        lastScrollTime = now;
-      }
-    };
+  const { scrollY } = useScroll();
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 50);
+  });
+
+  useEffect(() => {
     // IntersectionObserver for section tracking
     const sections = ["hero", "network", "security", "pricing", "docs"];
     const observerOptions = {
@@ -55,10 +51,7 @@ export const Navbar = () => {
       if (element) observer.observe(element);
     });
 
-    window.addEventListener("scroll", handleScroll);
-
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
     };
   }, []);
