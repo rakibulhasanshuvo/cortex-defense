@@ -7,7 +7,7 @@ import { Insights } from "@/components/sections/Insights";
 import { Features } from "@/components/sections/Features";
 import { Pricing } from "@/components/sections/Pricing";
 import { Footer } from "@/components/layout/Footer";
-import { Shield, Cpu, Activity, ArrowDown } from "lucide-react";
+import { Shield, Cpu, Activity } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { FloatingShapes } from "@/components/effects/FloatingShapes";
 import { TextReveal } from "@/components/ui/TextReveal";
