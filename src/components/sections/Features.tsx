@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Shield, Lock, Zap, Cpu, MousePointer2, Smartphone, Globe, Layers, ChevronRight } from "lucide-react";
+import { Shield, Lock, Cpu, MousePointer2, Smartphone, Layers, ChevronRight } from "lucide-react";
 import { useRef } from "react";
 import { SectionHeader } from "../ui/SectionHeader";
 
