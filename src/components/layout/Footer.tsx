@@ -6,6 +6,7 @@ import { Twitter, Github, Linkedin } from "../ui/Icons";
 import Link from "next/link";
 import { MagneticButton } from "../ui/MagneticButton";
 import { NewsletterForm } from "../ui/NewsletterForm";
+const SOCIAL_ICONS = [Twitter, Github, Linkedin];
 
 
 export const Footer = () => {
@@ -29,7 +30,7 @@ export const Footer = () => {
               and distributed architectures for the decentralized world.
             </p>
             <div className="flex gap-4">
-              {[Twitter, Github, Linkedin].map((Icon, i) => (
+              {SOCIAL_ICONS.map((Icon, i) => (
                 <MagneticButton key={i} strength={0.3}>
                   <Link href="#" className="p-3 glass rounded-xl text-white/40 hover:text-primary transition-all duration-300 block border border-transparent hover:border-white/5">
                     <Icon size={18} />
