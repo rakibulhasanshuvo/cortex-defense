@@ -8,10 +8,10 @@ import { ScrollProgress } from "../ui/ScrollProgress";
 import Link from "next/link";
 
 const navItems = [
-  { name: "Dashboard", href: "#hero", icon: LayoutDashboard },
-  { name: "Network", href: "#network", icon: Share2 },
-  { name: "Security", href: "#security", icon: Shield },
-  { name: "Whitepaper", href: "#docs", icon: FileText },
+  { name: "Dashboard", href: "#hero" },
+  { name: "Network", href: "#network" },
+  { name: "Security", href: "#security" },
+  { name: "Whitepaper", href: "#docs" },
 ];
 
 export const Navbar = () => {
