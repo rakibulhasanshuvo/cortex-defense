@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Shield, Lock, Zap, Cpu, MousePointer2, Smartphone, Globe, Layers, ChevronRight } from "lucide-react";
 import { useRef } from "react";
 import { SectionHeader } from "../ui/SectionHeader";
+const PROGRESS_STEPS = [1, 2, 3, 4, 5];
 
 const features = [
   {
@@ -58,7 +59,7 @@ export const Features = () => {
                   <div className="text-right">
                     <div className="text-[10px] uppercase font-mono tracking-widest text-primary mb-2">Node Encryption</div>
                     <div className="flex gap-1 justify-end">
-                        {[1, 2, 3, 4, 5].map(i => (
+                        {PROGRESS_STEPS.map(i => (
                             <div key={i} className="h-1 w-6 rounded-full bg-primary/40" />
                         ))}
                     </div>
