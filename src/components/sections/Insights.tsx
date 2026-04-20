@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Activity, Lock, Zap, ChevronRight, PieChart, BarChart } from "lucide-react";
+import { Shield, Activity, Lock, Zap, ChevronRight, BarChart } from "lucide-react";
 import { SectionHeader } from "../ui/SectionHeader";
 
 const cards = [
