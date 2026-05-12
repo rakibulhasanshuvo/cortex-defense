@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Shield, Activity, Lock, Zap, ChevronRight, PieChart, BarChart } from "lucide-react";
 import { SectionHeader } from "../ui/SectionHeader";
+const MOCK_BARS = [1, 2, 3, 4];
 
 const cards = [
   {
@@ -131,7 +132,7 @@ export const Insights = () => {
             {/* Mock Dashboard Illustration */}
             <div className="w-full max-w-5xl mt-12 bg-black/60 border border-white/10 rounded-t-3xl h-full shadow-[0_40px_100px_rgba(0,0,0,0.8)] p-6 overflow-hidden relative group-hover:border-primary/20 transition-colors duration-500">
                 <div className="flex gap-4 mb-8 pt-4 px-4">
-                    {[1, 2, 3, 4].map(i => (
+                    {MOCK_BARS.map(i => (
                         <div key={i} className="h-2 w-20 rounded-full bg-white/5" />
                     ))}
                 </div>
